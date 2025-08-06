@@ -5,6 +5,16 @@ services:
       options:
         max-size: "200k"
         max-file: "10"
+    container_name: whatsapp-api
+    environment:
+      - APP_BASIC_AUTH=${BASIC_AUTH_CREDENTIALS}
+      - APP_PORT=3000
+      - APP_DEBUG=false
+      - APP_OS=Firefox
+      - APP_ACCOUNT_VALIDATION=true
+      - WHATSAPP_AUTO_REPLY=${AUTO_REPLY_MESSAGE}
+      - WHATSAPP_WEBHOOK=${WEBHOOK_URL}
+      - WHATSAPP_WEBHOOK_SECRET=${WEBHOOK_SECRET}
     build:
       context: .
       dockerfile: ./docker/golang.Dockerfile
